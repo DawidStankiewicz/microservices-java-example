@@ -1,6 +1,6 @@
 spring:
   application:
-    name: pool-service
+    name: results-service
   profiles:
     active: default
   cloud:

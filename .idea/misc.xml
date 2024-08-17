@@ -8,6 +8,8 @@
         <option value="$PROJECT_DIR$/configuration/pom.xml" />
         <option value="$PROJECT_DIR$/pool-service/pom.xml" />
         <option value="$PROJECT_DIR$/mongodb/pom.xml" />
+        <option value="$PROJECT_DIR$/discovery-service/pom.xml" />
+        <option value="$PROJECT_DIR$/results-service/pom.xml" />
       </list>
     </option>
   </component>

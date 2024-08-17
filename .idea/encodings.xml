@@ -4,8 +4,10 @@
     <file url="file://$PROJECT_DIR$/configuration-server/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/configuration/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/configuration/src/main/resources" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/discovery-service/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/mongodb/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/mongodb/src/main/resources" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/pool-service/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/results-service/src/main/java" charset="UTF-8" />
   </component>
 </project>

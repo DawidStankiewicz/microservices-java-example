@@ -1,2 +1,8 @@
-spring.data.mongodb.uri=mongodb+srv://mongoadmin:change_me_password@localhost:27017/pools
-spring.data.mongodb.database=pools
+spring:
+  data:
+    mongodb:
+      host: localhost
+      port: 27017
+      database: pools
+      username: mongoadmin
+      password: change_me_password

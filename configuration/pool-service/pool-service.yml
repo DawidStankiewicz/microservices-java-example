@@ -6,3 +6,4 @@ spring:
       database: pools
       username: mongoadmin
       password: change_me_password
+      authentication-database: admin

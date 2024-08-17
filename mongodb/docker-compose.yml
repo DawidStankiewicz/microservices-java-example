@@ -2,13 +2,14 @@ version: '3.3'
 services:
   mongo:
     ports:
-      - ':27017'
+      - '27017:27017'
     container_name: mongodb
     restart: always
     logging:
       options:
         max-size: 10m
     environment:
-      - MONGO_INITDB_ROOT_USERNAME=mongoadmin
-      - MONGO_INITDB_ROOT_PASSWORD=change_me_password
+      - 'MONGO_INITDB_DATABASE=pools'
+      - 'MONGO_INITDB_ROOT_USERNAME=mongoadmin'
+      - 'MONGO_INITDB_ROOT_PASSWORD=change_me_password'
     image: mongo

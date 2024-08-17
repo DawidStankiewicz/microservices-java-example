@@ -1,0 +1,8 @@
+spring:
+  application:
+    name: pool-service
+  profiles:
+    active: default
+  cloud:
+    config:
+      uri: http://localhost:8888

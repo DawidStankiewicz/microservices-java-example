@@ -1,20 +1,22 @@
 package dev.stankiewicz.example.poolservice.model;
 
 
+import jakarta.persistence.*;
 import lombok.Data;
-import org.springframework.data.annotation.Id;
-import org.springframework.data.mongodb.core.mapping.Document;
 
 import java.util.List;
 
 @Data
-@Document(collection = "polls")
+@Entity
 public class Pool {
 
     @Id
-    private String id;
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
     private String title;
     private String description;
+    @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+    @JoinColumn(name = "pool_id")
     private List<Option> options;
 
 }

@@ -1,16 +1,27 @@
 package dev.stankiewicz.example.poolservice.model;
 
+import jakarta.persistence.*;
 import lombok.Data;
-import org.springframework.data.annotation.Id;
-import org.springframework.data.mongodb.core.mapping.Document;
+
+import java.time.LocalDateTime;
 
 @Data
-@Document(collection = "votes")
+@Entity
 public class Vote {
 
     @Id
-    private String id;
-    private String pollId;
-    private String optionId;
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
+
+    @ManyToOne
+    private Option option;
+
     private String userId;
+
+    LocalDateTime voteDate;
+
+    @PrePersist
+    public void prePersist() {
+        voteDate = LocalDateTime.now();
+    }
 }

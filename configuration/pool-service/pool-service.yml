@@ -3,8 +3,8 @@ server:
 spring:
   datasource:
     url: jdbc:postgresql://localhost:5432/pool
-    username: change_me_username
-    password: change_me_password
+    username: pool
+    password: pgadmin
     driver-class-name: org.postgresql.Driver
   jpa:
     properties:

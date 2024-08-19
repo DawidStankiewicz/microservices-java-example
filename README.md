@@ -24,6 +24,11 @@
 
 #### 🔜 Auto discovery of microservices
 
+#### 🔜 Feign Client with HATEOAS example
+- check `PoolVotesFeignClient`
+- example of reading collection from _embedded HAT+JSON using `CollectionModel`
+- 🔜 example of fetching related resource using links
+
 #### 🔜 Deployment using Docker containers
 
 #### 🔜 Automatic service replication

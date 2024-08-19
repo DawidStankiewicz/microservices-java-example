@@ -18,7 +18,7 @@ public class Vote {
 
     private String userId;
 
-    LocalDateTime voteDate;
+    private LocalDateTime voteDate;
 
     @PrePersist
     public void prePersist() {

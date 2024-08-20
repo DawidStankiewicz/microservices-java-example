@@ -9,8 +9,10 @@ import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
+import org.springframework.hateoas.CollectionModel;
+import org.springframework.hateoas.IanaLinkRelations;
+import org.springframework.hateoas.Link;
 
-import java.net.URI;
 import java.util.Arrays;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
@@ -33,19 +35,19 @@ public class ResultServiceTest {
         //given
         Long poolId = 1L;
         doReturn(Pool.builder().title("pool").build()).when(poolVotesFeignClient).getPool(poolId);
-        doReturn(Arrays.asList(
-                Option.builder().description("option A").build(),
-                Option.builder().description("option B").build())
-        ).when(poolVotesFeignClient).getPoolOptions(poolId);
-        doReturn(Arrays.asList(
+        doReturn(CollectionModel.of(Arrays.asList(
+                Option.builder().description("option A").build().add(Link.of("http://localhost:1234/options/1", IanaLinkRelations.SELF)),
+                Option.builder().description("option B").build().add(Link.of("http://localhost:1234/options/2", IanaLinkRelations.SELF)))
+        )).when(poolVotesFeignClient).getPoolOptions(poolId);
+        doReturn(CollectionModel.of(Arrays.asList(
                 Vote.builder().userId("user A").build(),
                 Vote.builder().userId("user B").build(),
                 Vote.builder().userId("user C").build()
-        )).when(poolVotesFeignClient).getVotes(URI.create("/options/123/votes"));
-        doReturn(Arrays.asList(
+        ))).when(poolVotesFeignClient).getVotes(1L);
+        doReturn(CollectionModel.of(Arrays.asList(
                 Vote.builder().userId("user D").build(),
                 Vote.builder().userId("user E").build()
-        )).when(poolVotesFeignClient).getVotes(URI.create("/options/123/votes"));
+        ))).when(poolVotesFeignClient).getVotes(2L);
         //when
         Result result = resultsService.getPoolResults(poolId);
         //then

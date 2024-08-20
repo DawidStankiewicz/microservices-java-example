@@ -9,8 +9,6 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
-import java.net.URI;
-
 @FeignClient(value = "pool-service")
 public interface PoolVotesFeignClient {
 
@@ -22,7 +20,7 @@ public interface PoolVotesFeignClient {
             value = "/pools/{poolId}/options")
     CollectionModel<Option> getPoolOptions(@PathVariable("poolId") Long poolId);
 
-    @RequestMapping(method = RequestMethod.GET)
-    CollectionModel<Vote> getVotes(URI votesUrl);
+    @RequestMapping(method = RequestMethod.GET, value = "/options/{optionId}/votes")
+    CollectionModel<Vote> getVotes(@PathVariable("optionId") Long optionId);
 
 }

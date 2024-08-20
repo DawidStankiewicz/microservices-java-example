@@ -5,6 +5,7 @@ import dev.stankiewicz.example.resultsservice.model.Pool;
 import dev.stankiewicz.example.resultsservice.model.Result;
 import dev.stankiewicz.example.resultsservice.model.Vote;
 import org.springframework.hateoas.CollectionModel;
+import org.springframework.hateoas.IanaLinkRelations;
 import org.springframework.stereotype.Service;
 
 import java.util.Collection;
@@ -26,7 +27,11 @@ public class ResultsService {
         CollectionModel<Option> options = poolVotesFeignClient.getPoolOptions(poolId);
         Map<Option, Collection<Vote>> votes = options.getContent().stream()
                 .collect(Collectors.toMap(
-                        Function.identity(), option -> poolVotesFeignClient.getVotes(option.getLink("votes").get().toUri()).getContent()
+                        Function.identity(), option -> {
+                            String[] selfLinkSplit = option.getLink(IanaLinkRelations.SELF).get().toUri().getPath().split("/");
+                            long optionId = Long.parseLong(selfLinkSplit[selfLinkSplit.length - 1]);
+                            return poolVotesFeignClient.getVotes(optionId).getContent();
+                        }
                 ));
         long sumOfAllVotes = votes.values()
                 .stream()

@@ -22,12 +22,24 @@
 
 #### 🔜 Secrets in microservice's configuration are encrypted (like password to database)
 
-#### 🔜 Auto discovery of microservices
+#### ✅ Auto discovery of microservices
+- `pool-service` and `result-service` register themselves in discovery service
 
-#### 🔜 Feign Client with HATEOAS example
+#### ✅ Feign Client with HATEOAS example
 - check `PoolVotesFeignClient`
 - example of reading collection from _embedded HAT+JSON using `CollectionModel`
-- 🔜 example of fetching related resource using links
+
+#### 🔜 Microservices resilience patterns
+Check current state at `/actuator/health`
+
+- 🔜 Retry
+- 🔜 Circuit Breaker
+  - Check `PoolVotesFeignClient` in **results-service**
+- 🔜 Rate Limiter
+- 🔜 Time Limiter
+- 🔜 Bulkhead
+- 🔜 Cache
+- 🔜 Fallback
 
 #### 🔜 Deployment using Docker containers
 

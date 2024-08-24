@@ -41,11 +41,9 @@ public class ResultsService {
                 Option::getDescription,
                 option -> (float) votes.get(option).size() / sumOfAllVotes
         ));
-
         return Result.builder()
                 .poolTitle(pool.getTitle())
                 .optionPercentResults(votesPercent)
                 .build();
     }
-
 }

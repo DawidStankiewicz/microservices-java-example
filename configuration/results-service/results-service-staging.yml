@@ -3,7 +3,7 @@ server:
 resilience4j.circuitbreaker:
   instances:
     pool-service:
-      register-health-indicator: true
+      register-health-indicator: false
       failure-rate-threshold: 50
       slow-call-rate-threshold: 75
       slow-call-duration-threshold: 10s
@@ -12,7 +12,7 @@ resilience4j.circuitbreaker:
       minimum-number-of-calls: 5
       wait-duration-in-open-state: 10s
     results-service:
-      register-health-indicator: true
+      register-health-indicator: false
       failure-rate-threshold: 50
       slow-call-rate-threshold: 75
       slow-call-duration-threshold: 10s
@@ -22,18 +22,18 @@ resilience4j.circuitbreaker:
       wait-duration-in-open-state: 10s
   configs:
     default:
-      register-health-indicator: true
+      register-health-indicator: false
 
 management:
   health:
     circuitbreakers:
-      enabled: true
+      enabled: false
   endpoints:
     web:
       exposure:
-        include: "*"
+        include: health
   endpoint:
     env:
-      enabled: true
+      enabled: false
     health:
-      show-details: always
+      show-details: never

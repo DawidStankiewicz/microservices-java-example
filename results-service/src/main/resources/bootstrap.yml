@@ -38,6 +38,33 @@ resilience4j.circuitbreaker:
   configs:
     default:
       register-health-indicator: true
+resilience4j.bulkhead:
+  instances:
+    pool-service:
+      max-concurrent-calls: 25
+      max-wait-duration: 0
+resilience4j:
+  thread-pool-bulkhead:
+    instances:
+      pool-service:
+        max-thread-pool-size: 10
+        core-thread-pool-size: 10
+        queue-capacity: 10
+        keep-alive-duration: 20ms
+  retry:
+    instances:
+      pool-service:
+        max-attempts: 5
+        wait-duration: 500ms
+        retry-exceptions:
+          - java.util.concurrent.TimeoutException
+  ratelimiter:
+    instances:
+      pool-service:
+        timeout-duration: 5000ms
+        limit-refresh-period: 500ns
+        limit-for-period: 50
+
 
 management:
   health:
@@ -52,4 +79,10 @@ management:
       enabled: true
     health:
       show-details: always
+
+logging:
+  level:
+    org.springframework.web: DEBUG
+    com: DEBUG
+    dev.stankiewicz: DEBUG
 

@@ -17,8 +17,9 @@
 #### ✅ Version controlled configuration 
 - configuration-server looks for configuration on git (at [configuration](/configuration) directory)
 
-#### 🔜 Microservices can refresh when a new configuration appears
+#### ✅ Microservices can refresh when a new configuration appears
 - while using `@RefreshScope` annotation, Spring Boot Actuator adds `/refresh` endpoint to refresh the service and reread the configuration form **configuration-server**
+- applied in **pool-service** and **results-service**
 
 #### 🔜 Secrets in microservice's configuration are encrypted (like password to database)
 
@@ -30,16 +31,15 @@
 - example of reading collection from _embedded HAT+JSON using `CollectionModel`
 
 #### 🔜 Microservices resilience patterns
-Check current state at `/actuator/health`
+Check current state at `/actuator/health`.  
+Patterns are configured in **results-service**.
 
-- 🔜 Retry
-- 🔜 Circuit Breaker
-  - Check `PoolVotesFeignClient` in **results-service**
-- 🔜 Rate Limiter
-- 🔜 Time Limiter
-- 🔜 Bulkhead
+- ✅ Retry
+- ✅ Circuit Breaker
+- ✅ Rate Limiter
+- ✅ Bulkhead
+- ✅ Fallback
 - 🔜 Cache
-- 🔜 Fallback
 
 #### 🔜 Deployment using Docker containers
 

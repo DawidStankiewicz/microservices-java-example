@@ -12,5 +12,5 @@ spring:
           searchLocations: file:///config/
         git:
           uri: https://github.com/DawidStankiewicz/microservices-java-example
-          searchPaths: configuration/pool-service,configuration/results-service
+          searchPaths: configuration/pool-service,configuration/results-service,configuration/gateway-server
           default-label: master

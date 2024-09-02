@@ -30,7 +30,7 @@
 - check `PoolVotesFeignClient`
 - example of reading collection from _embedded HAT+JSON using `CollectionModel`
 
-#### 🔜 Microservices resilience patterns
+#### ✅ Microservices resilience patterns
 Check current state at `/actuator/health`.  
 Patterns are configured in **results-service**.
 
@@ -52,7 +52,8 @@ Patterns are configured in **results-service**.
 
 #### 🔜 Service monitoring
 
-#### 🔜 Gateway service
+#### ✅ Gateway service
+- **gateway-server** as reverse proxy for all services registered in **discovery-service**
 
 #### 🔜 OAuth2
 

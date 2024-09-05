@@ -16,6 +16,8 @@ services:
     depends_on:
       - configuration-server
       - discovery-service
+    ports:
+      - "8072:8072"
   pool-service:
     build: ./pool-service/
     depends_on:

@@ -42,13 +42,17 @@ Patterns are configured in **results-service**.
 - 🔜 Cache
 
 #### ✅ Deployment using Docker containers
+- ✅ Docker Compose 
+- 🔜 Kubernetes
 
 #### 🔜 Automatic service replication
 
 #### ✅ Automatic health-check endpoint using Spring Actuator
 - **pool-service** has in its `pom.xml` `spring-boot-starter-actuator` dependency, so **pool-service** status can be retrieved from `/actuator/health`
 
-#### 🔜 Automatic health checks
+#### ✅ Automatic health checks
+- ✅ Docker Compose health checks
+- 🔜 Kubernetes health checks
 
 #### 🔜 Service monitoring
 
@@ -79,7 +83,7 @@ Patterns are configured in **results-service**.
 
 ## Start solution
 
-Run the whole solution using single script:
+Run the whole solution on localhost using single script:
 
 ```bash
 bash build_and_start.sh

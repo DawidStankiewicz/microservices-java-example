@@ -41,7 +41,7 @@ Patterns are configured in **results-service**.
 - ✅ Fallback
 - 🔜 Cache
 
-#### 🔜 Deployment using Docker containers
+#### ✅ Deployment using Docker containers
 
 #### 🔜 Automatic service replication
 
@@ -76,3 +76,17 @@ Patterns are configured in **results-service**.
 #### 🔜 Data caching
 
 #### 🔜 Logging aggregation
+
+## Start solution
+
+Run the whole solution using single script:
+
+```bash
+bash build_and_start.sh
+```
+
+if you have already built services' jars, then you can skip build part and just start docker compose:
+
+```bash
+bash start.sh
+```

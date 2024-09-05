@@ -1,16 +1,17 @@
-
 version: "3.9"
 services:
   configuration-server:
     build: ./configuration-server/
     ports:
       - "8888:8888"
+    restart: always
   discovery-service:
     build: ./discovery-service/
     depends_on:
       - configuration-server
     ports:
       - "8761:8761"
+    restart: always
   gateway-server:
     build: ./gateway-server/
     depends_on:
@@ -18,17 +19,20 @@ services:
       - discovery-service
     ports:
       - "8072:8072"
+    restart: always
   pool-service:
     build: ./pool-service/
     depends_on:
       - postgres
       - configuration-server
       - discovery-service
+    restart: always
   results-service:
     build: ./results-service/
     depends_on:
       - configuration-server
       - discovery-service
+    restart: always
   postgres:
     image: postgres:16.4
     restart: always

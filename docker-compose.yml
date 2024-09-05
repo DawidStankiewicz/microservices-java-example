@@ -1,0 +1,40 @@
+
+version: "3.9"
+services:
+  configuration-server:
+    build: ./configuration-server/
+    ports:
+      - "8888:8888"
+  discovery-service:
+    build: ./discovery-service/
+    depends_on:
+      - configuration-server
+    ports:
+      - "8761:8761"
+  gateway-server:
+    build: ./gateway-server/
+    depends_on:
+      - configuration-server
+      - discovery-service
+  pool-service:
+    build: ./pool-service/
+    depends_on:
+      - postgres
+      - configuration-server
+      - discovery-service
+  results-service:
+    build: ./results-service/
+    depends_on:
+      - configuration-server
+      - discovery-service
+  postgres:
+    image: postgres:16.4
+    restart: always
+    environment:
+      - 'POSTGRES_DB=pool'
+      - 'POSTGRES_PASSWORD=pgadmin'
+      - 'POSTGRES_USER=pool'
+    ports:
+      - "5432:5432"
+  #    volumes:
+  #      - "./<your_sql_file_name_here>.sql:/docker-entrypoint-initdb.d/1.sql"

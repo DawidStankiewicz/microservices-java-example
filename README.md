@@ -8,7 +8,7 @@
 - pool-service with PoolRepository created using `@RepositoryRestResource`
 
 #### ✅ DB service
-- mongodb
+- postgres
 
 #### ✅ Centralized & boot time loaded service configuration
 - Spring Cloud configuration server with git-based backend

@@ -23,7 +23,14 @@ resilience4j.circuitbreaker:
   configs:
     default:
       register-health-indicator: true
-
+eureka:
+  instance:
+    preferIpAddress: true
+  client:
+    registerWithEureka: true
+    fetchRegistry: true
+    serviceUrl:
+      defaultZone: http://discovery-service:8761/eureka/
 management:
   health:
     circuitbreakers:

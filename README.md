@@ -118,3 +118,7 @@ bash stop_kubernetes.sh
 ```ip
 curl 172.21.58.62:8072/actuator/health
 ```
+
+## Template
+If you wish to use this repository as your next project starter, remember to extract each service to its own repository. 
+Here, all services (and configuration) are in single git repository to simplify the example.

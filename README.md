@@ -42,8 +42,9 @@ Patterns are configured in **results-service**.
 - 🔜 Cache
 
 #### ✅ Deployment using Docker containers
-- ✅ Docker Compose 
-- 🔜 Kubernetes
+- ✅ locally on Docker Compose - [build_and_start_compose.sh](build_and_start_compose.sh)
+- ✅ locally on Kubernetes (minikube) - [build_and_start_kubernetes.sh](build_and_start_kubernetes.sh)
+- 🔜 on AWS services
 
 #### 🔜 Automatic service replication
 
@@ -52,7 +53,7 @@ Patterns are configured in **results-service**.
 
 #### ✅ Automatic health checks
 - ✅ Docker Compose health checks
-- 🔜 Kubernetes health checks
+- ✅ Kubernetes health checks
 
 #### 🔜 Service monitoring
 
@@ -64,8 +65,6 @@ Patterns are configured in **results-service**.
 #### 🔜 JWT token
 
 #### 🔜 Messaging system - Spring Cloud Stream + Kafka
-
-#### 🔜 Deployment on AWS services
 
 #### 🔜 CI/CD pipelines for each module
 
@@ -83,14 +82,39 @@ Patterns are configured in **results-service**.
 
 ## Start solution
 
+### Docker compose
+
 Run the whole solution on localhost using single script:
 
 ```bash
-bash build_and_start.sh
+bash build_and_start_compose.sh
 ```
 
 if you have already built services' jars, then you can skip build part and just start docker compose:
 
 ```bash
-bash start.sh
+bash start_compose.sh
+```
+
+### Kubernetes
+
+If you have installed kubernetes and already have running minikube cluster, then you can start the solution using:
+```bash
+bash build_and_start_kubernetes.sh
+```
+It will compile jar file for each service, build docker image available for the minikube cluster and deploy services on the cluster.
+
+Then you can use this script to just start services:
+```bash
+bash start_kubernetes.sh
+```
+
+To stop them use:
+```bash
+bash stop_kubernetes.sh
+```
+
+**Gateway server** will be exposed on minikube IP (which you can check by typing `minikube ip` in your terminal), e.g.:
+```ip
+curl 172.21.58.62:8072/actuator/health
 ```

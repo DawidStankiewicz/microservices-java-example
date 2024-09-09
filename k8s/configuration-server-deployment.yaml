@@ -1,0 +1,39 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    io.kompose.service: configuration-server
+  name: configuration-server
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      io.kompose.service: configuration-server
+  strategy: { }
+  template:
+    metadata:
+      labels:
+        io.kompose.network/microservices-java-example-default: "true"
+        io.kompose.service: configuration-server
+    spec:
+      containers:
+        - image: configuration-server
+          imagePullPolicy: IfNotPresent
+          livenessProbe:
+            exec:
+              command:
+                - curl
+                - -f
+                - http://localhost:8888/actuator/health
+            failureThreshold: 3
+            initialDelaySeconds: 15
+            periodSeconds: 30
+            timeoutSeconds: 10
+          name: configuration-server
+          ports:
+            - containerPort: 8888
+              hostPort: 8888
+              protocol: TCP
+          resources: { }
+      restartPolicy: Always
+

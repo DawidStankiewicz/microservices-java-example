@@ -1,0 +1,28 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    io.kompose.service: gateway-server
+  name: gateway-server
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      io.kompose.service: gateway-server
+  strategy: {}
+  template:
+    metadata:
+      labels:
+        io.kompose.network/microservices-java-example-default: "true"
+        io.kompose.service: gateway-server
+    spec:
+      containers:
+        - image: gateway-server
+          imagePullPolicy: IfNotPresent
+          name: gateway-server
+          ports:
+            - containerPort: 8072
+              hostPort: 8072
+              protocol: TCP
+          resources: {}
+      restartPolicy: Always

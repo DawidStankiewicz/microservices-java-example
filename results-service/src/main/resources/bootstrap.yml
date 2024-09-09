@@ -7,6 +7,9 @@ spring:
     config:
       uri: http://configuration-server:8888
       enabled: true
+      fail-fast: true
+      retry:
+        max-attempts: 20
 resilience4j.circuitbreaker:
   instances:
     pool-service:
